@@ -1,0 +1,27 @@
+mat-card {
+  display: inline-flex;
+  margin: 5px;
+  width: 130px;
+  height: 180px
+}
+
+mat-card-actions {
+  justify-content: center;
+  text-align: center;
+}
+
+.weather-img {
+  width: 120px;
+  justify-content: center;
+  text-align: center;
+}
+
+.today-highlight {
+  margin: 10px;
+}
+
+.cards {
+  display: inline-flex;
+  margin-left: 10px;
+}
+

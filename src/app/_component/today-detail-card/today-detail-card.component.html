@@ -1,0 +1,97 @@
+<div class="today-highlight mat-headline-5">Today's Highlights</div>
+
+<!-- CARDS -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>UV Index</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/uv.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.uvi | number:'1.0-0'}} nm</span>
+  </mat-card-actions>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Wind Speed</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/speed.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.wind_speed | number:'1.0-0'}} m/s</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Feels Like</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/feeling.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.feels_like | number:'1.0-0'}} &#8451;</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Humidity</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/humidity.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.humidity | number:'1.0-0'}}%</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Wind Direction</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/wind.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.wind_gust | number:'1.0-0'}}&#176;</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Pressure</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/pressure.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.pressure | number:'1.0-0'}} hPA</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Sunrise</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/sunrise.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.sunrise | date:'h:mm a'}}</span>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Sunset</mat-card-title>
+  </mat-card-header>
+  <div class="weather-img">
+    <img mat-card-sm-image src="../../../../assets/img/sunset.svg" alt="" class="w-2/6">
+  </div>
+  <mat-card-actions>
+    <span class="weather-text mat-headline-6">{{todayWeatherForecast?.sunset | date:'h:mm a'}}</span>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,38 @@
+.app-container {
+  height: 100vh;
+}
+
+.main-toolbar {
+
+}
+
+.main-workspace {
+  display: flex;
+  height: 100%;
+}
+
+.app-sidenav {
+  width: 350px;
+  background: lavender;
+}
+
+mat-icon {
+  color: #a5a9aa;
+}
+
+.city-field {
+  width: 350px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.app-name-label, h1 {
+  margin: 0 !important;
+}
+
+mat-nav-list {
+  justify-content: center;
+  text-align: center;
+}
