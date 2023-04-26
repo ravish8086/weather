@@ -8,7 +8,7 @@ export class WeatherService {
 
   weatherAPI: string = 'https://openweathermap.org/data/2.5/onecall';
   geoCodeAPI: string = 'https://openweathermap.org/data/2.5/weather';
-  appId: string = '<APP_ID';
+  appId: string = 'XX';
 
   constructor() {
   }

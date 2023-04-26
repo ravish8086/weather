@@ -3,7 +3,7 @@
     <mat-nav-list style="padding: 0">
       <mat-form-field class="city-field">
         <mat-label>City</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
+        <input matInput type="text" [(ngModel)]="value" (keyup.enter)="loadWeatherDetails()">
         <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="loadWeatherDetails()">
           <mat-icon>location_on</mat-icon>
         </button>
@@ -22,13 +22,16 @@
 
       <!-- DATE -->
       <div class="mat-headline-5">
-        <span class="">{{currentTime | date: 'EEE'}},</span>
-        <span class="">{{currentTime | date: 'h:mm a'}}</span>
+        <span>{{currentTime | date: 'EEE'}}, {{currentTime | date: 'h:mm a'}}</span>
       </div>
 
       <!-- WEATHER EXTRAS -->
       <div class="mat-headline-5">
-        <span class="">{{location}}</span>
+        <span>{{location}}</span>
+      </div>
+
+      <div class="mat-headline-7">
+        <span class="span-text">{{openAIRemarks}}</span>
       </div>
 
     </mat-nav-list>

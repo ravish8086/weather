@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { WeatherForecastRoutingModule } from './weather-forecast-routing.module';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     FormsModule,
     WeatherForecastRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ]
 })
 export class WeatherForecastModule {

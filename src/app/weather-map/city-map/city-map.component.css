@@ -1,0 +1,18 @@
+.search-field {
+  text-align: center;
+  display: flex;
+}
+
+.map-search {
+  width: 400px;
+  margin-left: 20px;
+}
+
+.zoom-in {
+  margin: 20px;
+}
+
+.zoom-out {
+  margin: 20px;
+}
+

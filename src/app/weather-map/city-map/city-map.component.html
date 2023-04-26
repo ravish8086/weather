@@ -1,0 +1,37 @@
+<div class="search-field">
+  <mat-form-field class="map-search">
+    <mat-label>Enter Address</mat-label>
+    <input matInput #mapSearchField type="text" [(ngModel)]="value">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="zoomIn()" class="zoom-in">Zoom In</button>
+  <button mat-raised-button color="primary" (click)="zoomOut()" class="zoom-out">Zoom Out</button>
+</div>
+
+<google-map height="500px"
+            width="100%"
+            [zoom]="zoom"
+            [center]="center"
+            [options]="options">
+  <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options">
+  </map-marker>
+</google-map>
+
+<ng-container *ngIf="todoLookup">
+  <mat-card>
+    <mat-card-header>
+      <h4>What can I do in {{todoLookup}}?</h4>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-progress-bar mode="indeterminate" *ngIf="!openAIRemarks"></mat-progress-bar>
+      <ul *ngFor="let eachRemark of openAIRemarks">
+        <li *ngIf="eachRemark">{{eachRemark}}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

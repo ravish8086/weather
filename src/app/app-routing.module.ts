@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'weather',
     loadChildren: () => import('./weather-forecast/weather-forecast.module').then(m => m.WeatherForecastModule)
+  },
+  {
+    path: 'city',
+    loadChildren: () => import('./weather-map/weather-map.module').then(m => m.WeatherMapModule)
   }
 ];
 

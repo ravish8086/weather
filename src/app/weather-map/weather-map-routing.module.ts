@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ForecastComponent } from './forecast/forecast.component';
+import { CityMapComponent } from './city-map/city-map.component';
 
 const routes: Routes = [
-  { path: '', component: ForecastComponent },
+  { path: '', component: CityMapComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class WeatherForecastRoutingModule {
+export class WeatherMapRoutingModule {
 }

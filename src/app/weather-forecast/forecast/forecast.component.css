@@ -2,10 +2,6 @@
   height: 100vh;
 }
 
-.main-toolbar {
-
-}
-
 .main-workspace {
   display: flex;
   height: 100%;
@@ -35,4 +31,8 @@ mat-icon {
 mat-nav-list {
   justify-content: center;
   text-align: center;
+}
+
+.span-text {
+  margin: 40px;
 }

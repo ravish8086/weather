@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { CoordinateWeather, Current, Daily, WeatherData } from '../../_model/weather.model';
 import { WeatherService } from '../../_service/weather.service';
+import { OpenaiService } from '../../_service/openai.service';
 
 @Component({
   selector: 'app-forecast',
@@ -27,8 +28,9 @@ export class ForecastComponent implements OnInit {
   currentTime: Date | undefined;
   location: any;
   todayWeather: Current | undefined;
+  openAIRemarks: string | undefined;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private openAI: OpenaiService) {
   }
 
   ngOnInit(): void {
@@ -61,5 +63,14 @@ export class ForecastComponent implements OnInit {
         this.location = this.coordinateWeather?.name;
       });
     });
+
+    this.openAI.generateText(`Tell me about ${this.value} ?`)
+      .then((message) => {
+        this.openAIRemarks = message;
+        console.log(message);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
