@@ -26,6 +26,7 @@ export class CityMapComponent implements OnInit {
   value: any;
   todoLookup: string | undefined = 'Austin Tx';
   openAIRemarks: string[] | undefined;
+  loading = true;
 
   constructor(private openAI: OpenaiService) {
   }
@@ -40,11 +41,15 @@ export class CityMapComponent implements OnInit {
     this.askAI();
   }
 
+  /**
+   * Life cycle hook, called after ngInit.
+   * Load the google map and marker based on the entered and selected address on google map
+   */
   ngAfterViewInit(): void {
     const searchBox = new google.maps.places.SearchBox(this.searchField?.nativeElement);
+    // Event listner to observe any address change or selection
     searchBox.addListener('places_changed', () => {
-      this.openAIRemarks = undefined;
-      this.todoLookup = undefined;
+      this.loading = true;
       const places = searchBox.getPlaces();
       if (places?.length === 0) {
         return;
@@ -70,6 +75,11 @@ export class CityMapComponent implements OnInit {
     });
   }
 
+  /**
+   * Add Marker to the entered city.
+   *
+   * @param place
+   */
   addMarker(place: google.maps.places.PlaceResult) {
     this.markers.push({
       position: {
@@ -89,21 +99,33 @@ export class CityMapComponent implements OnInit {
 
   }
 
+  /**
+   * Zoom in the google MAP
+   */
   zoomIn() {
     // @ts-ignore
     if (this.zoom < this.options.maxZoom) this.zoom++;
   }
 
+  /**
+   * Zoom Out the google MAP
+   */
   zoomOut() {
     // @ts-ignore
     if (this.zoom > this.options.minZoom) this.zoom--;
   }
 
+  /**
+   * Rest API call to Open AI to get the suggestu=ion for
+   * "What can I do in a given City"
+   */
   askAI() {
+    this.loading = true;
     this.openAI.generateText(`What can I do in ${this.todoLookup} ?`)
       .then((message) => {
         this.openAIRemarks = message.split('\n');
         console.log(this.openAIRemarks);
+        this.loading = false;
       })
       .catch((error) => {
         console.error(error);

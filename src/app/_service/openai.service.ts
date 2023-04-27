@@ -15,6 +15,11 @@ export class OpenaiService {
     this.openAI = new OpenAIApi(configuration);
   }
 
+  /**
+   * Rest API call to OpenAI
+   * Ref - https://platform.openai.com/docs/api-reference
+   * @param prompt -> Question in string
+   */
   async generateText(prompt: string): Promise<string> {
     try {
       const completions = await this.openAI?.createCompletion({

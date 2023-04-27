@@ -13,12 +13,21 @@ export class WeatherService {
   constructor() {
   }
 
+  /**
+   * Rest API call to openweathermap.org to fetch the co-ordinates by city.
+   * @param city: string
+   */
   async getCoordinates(city: string): Promise<CoordinateWeather> {
     const url = `${this.geoCodeAPI}?q=${city}&units=metric&appid=${this.appId}`;
     let coordinateWeather = await fetch(url);
     return coordinateWeather.json();
   }
 
+  /**
+   * Rest API call to openweathermap.org to fetch the weather details for the given co-ordinates.
+   *
+   * @param coord
+   */
   async getWeatherDetails(coord: Coord): Promise<WeatherData> {
     const url = `${this.weatherAPI}?lat=${coord.lat}&lon=${coord.lon}&appid=${this.appId}&exclude=hourly,daily`;
     let weatherData = await fetch(url);

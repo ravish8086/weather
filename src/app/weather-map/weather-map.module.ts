@@ -6,8 +6,8 @@ import { WeatherMapRoutingModule } from './weather-map-routing.module';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatLegacyButtonModule } from '@angular/material/legacy-button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -21,8 +21,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatInputModule,
     FormsModule,
     MatCardModule,
-    MatLegacyButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatButtonModule
   ]
 })
 export class WeatherMapModule { }
