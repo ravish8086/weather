@@ -27,7 +27,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-progress-bar mode="indeterminate" *ngIf="loading === true"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
     <ul *ngFor="let eachRemark of openAIRemarks">
       <li *ngIf="eachRemark">{{eachRemark}}</li>
     </ul>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap, MapInfoWindow } from '@angular/google-maps';
 import { OpenaiService } from '../../_service/openai.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-city-map',
@@ -26,7 +27,7 @@ export class CityMapComponent implements OnInit {
   value: any;
   todoLookup: string | undefined = 'Austin Tx';
   openAIRemarks: string[] | undefined;
-  loading = true;
+  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor(private openAI: OpenaiService) {
   }
@@ -49,7 +50,7 @@ export class CityMapComponent implements OnInit {
     const searchBox = new google.maps.places.SearchBox(this.searchField?.nativeElement);
     // Event listner to observe any address change or selection
     searchBox.addListener('places_changed', () => {
-      this.loading = true;
+      this.loading.next(true);
       const places = searchBox.getPlaces();
       if (places?.length === 0) {
         return;
@@ -120,12 +121,12 @@ export class CityMapComponent implements OnInit {
    * "What can I do in a given City"
    */
   askAI() {
-    this.loading = true;
+    this.loading.next(true);
     this.openAI.generateText(`What can I do in ${this.todoLookup} ?`)
       .then((message) => {
         this.openAIRemarks = message.split('\n');
         console.log(this.openAIRemarks);
-        this.loading = false;
+        this.loading.next(false);
       })
       .catch((error) => {
         console.error(error);
