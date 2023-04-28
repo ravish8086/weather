@@ -21,14 +21,14 @@
   </map-marker>
 </google-map>
 
+<mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
 <mat-card>
   <mat-card-header>
     <h4>What can I do in {{todoLookup}}?</h4>
   </mat-card-header>
 
   <mat-card-content>
-    <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
-    <ul *ngFor="let eachRemark of openAIRemarks">
+    <ul *ngFor="let eachRemark of openAIResponse | async">
       <li *ngIf="eachRemark">{{eachRemark}}</li>
     </ul>
   </mat-card-content>

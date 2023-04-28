@@ -26,8 +26,8 @@ export class CityMapComponent implements OnInit {
   };
   value: any;
   todoLookup: string | undefined = 'Austin Tx';
-  openAIRemarks: string[] | undefined;
   loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  openAIResponse: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   constructor(private openAI: OpenaiService) {
   }
@@ -124,11 +124,11 @@ export class CityMapComponent implements OnInit {
     this.loading.next(true);
     this.openAI.generateText(`What can I do in ${this.todoLookup} ?`)
       .then((message) => {
-        this.openAIRemarks = message.split('\n');
-        console.log(this.openAIRemarks);
+        this.openAIResponse.next(message.split('\n'));
         this.loading.next(false);
       })
       .catch((error) => {
+        this.loading.next(false);
         console.error(error);
       });
   }
